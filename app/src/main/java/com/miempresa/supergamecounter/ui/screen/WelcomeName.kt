@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -19,15 +18,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.miempresa.supergamecounter.R
 import com.miempresa.supergamecounter.ui.components.MyButton
 
-@Preview
+
 @Composable
-fun RootWelcomeName() {
+fun RootWelcomeName(modifier: Modifier) {
 
     var name by remember { mutableStateOf<String?>(null) }
     if (name == null) {
@@ -49,7 +48,6 @@ fun RootWelcomeName() {
 }
 
 
-
 @Composable
 // onNameConfirmed : (String) -> Unit [ es una función que recibe un String y no devuelve nada]
 // se crea en @RootWelcomeName()
@@ -66,14 +64,13 @@ fun WelcomeScreenName(onNameConfirmed: (String) -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
+
         Image(
-            painter = painterResource(id = R.drawable.icon_mascota),
+            painter = painterResource(id = R.drawable.quince),
             contentDescription = "Mascota",
-            modifier = Modifier.size(200.dp)
+            modifier = Modifier.size(250.dp)
         )
-
         Spacer(modifier = Modifier.height(20.dp))
-
         TextField(
             value = entryName,
             onValueChange = { entryName = it },
@@ -81,19 +78,22 @@ fun WelcomeScreenName(onNameConfirmed: (String) -> Unit) {
             singleLine = true,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 16.dp)
+                .padding(vertical = 20.dp)
 
         )
 
         Spacer(modifier = Modifier.height(20.dp))
 
 
-        MyButton(onClick = {
-            if (entryName.isNotBlank()) {
-                onNameConfirmed(entryName)
-            }
+        MyButton(
+            onClick = {
+                if (entryName.isNotBlank()) {
+                    onNameConfirmed(entryName)
+                }
+            },
+            text = "Play ▶",
 
-        })
+        )
 
 
     }
