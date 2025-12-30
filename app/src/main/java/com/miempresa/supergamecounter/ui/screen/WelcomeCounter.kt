@@ -34,15 +34,3 @@ fun WelcomeScreenCounter() {
 
 }
 
-@Composable
-fun MyButton(modifier: Modifier = Modifier, onClick: () -> Unit) {
-
-    Button(
-        onClick = onClick,
-        modifier = modifier
-    ) {
-        Text(text = "Enviar")
-    }
-
-
-}
